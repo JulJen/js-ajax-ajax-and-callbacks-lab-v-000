@@ -7,7 +7,7 @@ function displayError(error) {
 
 
 function displayCommits(commits) {
-  $("#details").html(commits.map(commit=> {
+  $("#details").html(commits.map(result => {
     return (
       `<div>
         <h2><a href="${result.html_url}">${result.name}</a></h2>
