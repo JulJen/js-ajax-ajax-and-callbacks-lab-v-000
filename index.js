@@ -7,18 +7,15 @@ function displayError(error) {
 
 
 function displayCommits(commits) {
-  const commitsList = `<ul>${commits.map(commitInfo =>
-    '<li><strong>' +
-    commitInfo.author.login + ' - ' +
-    commitInfo.commit.author.name +
-    '</strong> - ' +
-    '<img src ="' + commitInfo.author.avatar_url + '">' +
-    commitInfo.sha +
-    '</li>'
-  ).join('')}</ul>`;
-
-  document.getElementById('details').innerHTML = commitsList;
-}
+  function displayCommits(data) {
+    $("#details").html(data.map(commit=> { return (
+      `<div>
+        <img src="${commit.avatar_url}" width="100px"><br>
+        <h4>${commit.commit.author.name} - (${commit.author.login})</h4>
+        <p>${commit.sha}</p>
+      </div>`);
+    }).join(""));
+  };
 
 
 function showCommits(el) {
