@@ -7,7 +7,7 @@ function displayError(error) {
 
 
 function displayCommits(commits) {
-  $("#details").html(commits.map(commit=> { 
+  $("#details").html(commits.map(commit=> {
     return (
       `<div>
         <img src="${commit.avatar_url}" width="100px"><br>
