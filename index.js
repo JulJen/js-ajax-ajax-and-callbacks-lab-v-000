@@ -7,12 +7,14 @@ function displayError(error) {
 
 
 function displayCommits(commits) {
-  $("#details").html(commits.map(commit=> { return (
-    `<div>
-      <img src="${commit.avatar_url}" width="100px"><br>
-      <h4>${commit.commit.author.name} - (${commit.author.login})</h4>
-      <p>${commit.sha}</p>
-    </div>`);
+  $("#details").html(commits.map(commit=> { 
+    return (
+      `<div>
+        <img src="${commit.avatar_url}" width="100px"><br>
+        <h4>${commit.commit.author.name} - (${commit.author.login})</h4>
+        <p>${commit.sha}</p>
+      </div>`
+    );
   }).join(""));
 };
 
