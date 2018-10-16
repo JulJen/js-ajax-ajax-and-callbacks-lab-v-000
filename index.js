@@ -10,9 +10,9 @@ function displayCommits(commits) {
   $("#details").html(commits.map(commit=> {
     return (
       `<div>
-        <img src="${commit.avatar_url}" width="100px"><br>
-        <h4>${commit.commit.author.name} - (${commit.author.login})</h4>
-        <p>${commit.sha}</p>
+        <h2><a href="${result.html_url}">${result.name}</a></h2>
+        <p><a href="#" data-repository="${result.name}" data-owner="${result.owner.login}" onclick="showCommits(this)">Show Commits</a></p>
+        <p>${result.description}</p>
       </div>`
     );
   }).join(""));
