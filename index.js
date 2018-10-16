@@ -30,19 +30,19 @@ function showCommits(el) {
 }
 function handleSearchResults(response) {
   const repos = response.items;
-  const repoList = `<ul>${repos
-       .map(
-         repo =>
-           '<li>' +
-           '<strong>' +  repo.name + '</strong> -' +
-           repo.description + '<br>' +
-           '<a href="' + repo.html_url + '">' + repo.html_url + '</a>' + '<br>' +
-           '<a href="#" onclick="showCommits(this)" data-repository="' + repo.name + '" data-owner="' + repo.owner.login + '">Show Commits</a>' +
-           '</li>'
-       )
-       .join('')}</ul>`;
+  const repoList = `<ul>${repos.map(repo =>
+    '<li>' +
+    '<strong>' +  repo.name + '</strong> -' +
+    repo.description + '<br>' +
+    '<a href="' + repo.html_url + '">' + repo.html_url + '</a>' + '<br>' +
+    '<a href="#" onclick="showCommits(this)" data-repository="' + repo.name + '" data-owner="' + repo.owner.login + '">Show Commits</a>' +
+    '</li>'
+   ).join('')}</ul>`;
+
     document.getElementById('results').innerHTML = repoList;
   }
+
+
 
 function showRepositories(result)  {
   const repos = result.items;
