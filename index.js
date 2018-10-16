@@ -39,7 +39,7 @@ function showCommits(el) {
     .join('')}</ul>`;
     document.getElementById("details").innerHTML = commitList;
   })
- 
+
 }
 
 
