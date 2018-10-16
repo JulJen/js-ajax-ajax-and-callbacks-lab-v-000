@@ -7,18 +7,16 @@ function displayError(error) {
 
 
 function displayCommits(commits) {
-  const commitsList = `<ul>${commits
-    .map(
-      commitInfo =>
-        '<li><strong>' +
-        commitInfo.author.login + ' - ' +
-        commitInfo.commit.author.name +
-        '</strong> - ' +
-        '<img src ="' + commitInfo.author.avatar_url + '">' +
-        commitInfo.sha +
-        '</li>'
-    )
-   .join('')}</ul>`;
+  const commitsList = `<ul>${commits.map(commitInfo =>
+    '<li><strong>' +
+    commitInfo.author.login + ' - ' +
+    commitInfo.commit.author.name +
+    '</strong> - ' +
+    '<img src ="' + commitInfo.author.avatar_url + '">' +
+    commitInfo.sha +
+    '</li>'
+  ).join('')}</ul>`;
+
   document.getElementById('details').innerHTML = commitsList;
 }
 
@@ -26,26 +24,26 @@ function displayCommits(commits) {
 function showCommits(el) {
   const repo = el.dataset.repository;
   const user = el.dataset.owner;
+
   $.get(`https://api.github.com/repos/${user}/${repo}/commits`, displayCommits).fail(displayError);
 }
 
 
+
 function showRepositories(result)  {
   const repos = result.items;
-  const repoList = `<ul>${repos
-       .map(
-         repo =>
-           '<li>' +
-           '<strong>' +  repo.name + '</strong> -' +
-           repo.description + '<br>' +
-           '<a href="' + repo.html_url + '">' + repo.html_url + '</a>' + '<br>' +
-           '<a href="#" onclick="showCommits(this)" data-repository="' + repo.name + '" data-owner="' + repo.owner.login + '">Show Commits</a>' +
-           '</li>'
-       )
-       .join('')}</ul>`;
+  const repoList = `<ul>${repos.map(repo =>
+    '<li>' +
+    '<strong>' +  repo.name + '</strong> -' +
+    repo.description + '<br>' +
+    '<a href="' + repo.html_url + '">' + repo.html_url + '</a>' + '<br>' +
+    '<a href="#" onclick="showCommits(this)" data-repository="' + repo.name + '" data-owner="' + repo.owner.login + '">Show Commits</a>' +
+    '</li>'
+  ).join('')}</ul>`;
 
   document.getElementById("results").innerHTML = repoList;
 }
+
 
 
 function searchRepositories() {
@@ -56,7 +54,6 @@ function searchRepositories() {
     .done(showRepositories)
     .fail(displayError);
 }
-
 
 
 
