@@ -7,7 +7,6 @@ function displayError(error) {
 
 
 function displayCommits(commits) {
-  // ToDo: commitInfo.author.login may not be avail...
   const commitsList = `<ul>${commits
     .map(
       commitInfo =>
@@ -22,6 +21,7 @@ function displayCommits(commits) {
    .join('')}</ul>`;
   document.getElementById('details').innerHTML = commitsList;
 }
+
 
 function showCommits(el) {
   const repo = el.dataset.repository;
